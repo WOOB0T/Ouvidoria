@@ -147,7 +147,9 @@ while escolha != 8:
             print("\n" + error.center(55, " "))
 
     elif escolha == 6:
-
+    consultaOcorrencias = "select * from ocorrencias"
+    ocorrencias = listarBancoDados(conexao, consultaOcorrencias)
+    
     if len(ocorrencias) == 0:
         print("\n" + "◆ Ainda não existem manifestações que possam ser alteradas!")
 
