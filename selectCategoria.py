@@ -1,6 +1,6 @@
 elif escolha == 2:
     print()
-    print("\n", "◆ Categorias de Manifestações", "\n")
+    print("\n" + "◆ Categorias de Manifestações" + "\n")
     print("[1] Reclamações")
     print("[2] Sugestões")
     print("[3] Elogios")
@@ -17,7 +17,7 @@ elif escolha == 2:
             print("◆ Ainda não existem manifestações nessa categoria!")
 
         else:
-            print("\n", "◆ Manifestações cadastradas até o momento:")
+            print("\n" + "◆ Manifestações cadastradas até o momento:")
             for o in ocorrenciasTipo:
                 print("\n" + "➥ Protocolo: ", o[0], "\n" + "➥ Título:", o[2], "\n" + "➥ Autor:", o[4])
 
