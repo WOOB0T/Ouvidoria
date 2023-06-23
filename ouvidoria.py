@@ -61,7 +61,7 @@ while escolha != 8:
 
     elif escolha == 2:
         print()
-        print("-", "Lista: Categorias de Manifestações", "-")
+        print("\n" + "◆ Categorias de Manifestações" + "\n")
         print("[1] Reclamações")
         print("[2] Sugestões")
         print("[3] Elogios")
