@@ -75,12 +75,12 @@ while escolha != 8:
             ocorrenciasTipo = listarBancoDados(conexao, listagemTipo)
 
             if len(ocorrenciasTipo) == 0:
-                print("Ainda não existem manifestações nessa categoria!")
+                print("◆ Ainda não existem manifestações nessa categoria!")
 
             else:
-                print('-', "Manifestações cadastradas até o momento:")
+                print("\n" + "◆ Manifestações cadastradas até o momento:")
                 for o in ocorrenciasTipo:
-                    print("Protocolo: ", o[0], "/", "Título:", o[2], "/", "Autor:", o[4])
+                    print("\n" + "➥ Protocolo: ", o[0], "\n" + "➥ Título:", o[2], "\n" + "➥ Autor:", o[4])
 
                 print("\n" + "◆ Fim da listagem.")
 
