@@ -1,13 +1,13 @@
-elif escolha == 3:\
-    print("\n" + "◆ Categorias de Manifestações:" + "\n")
+elif escolha == 3:
+    print("\n" + "Categorias de Manifestações:" + "\n")
     print("[ 1 ] Reclamações")
     print("[ 2 ] Sugestões")
     print("[ 3 ] Elogios")
 
-type = int(input("\n" + "▶ Digite pelo código em qual categoria você deseja cadastrar sua manifestação: "))
+type = int(input("\n" + "Digite o código da categoria você deseja cadastrar sua manifestação: "))
 
 if 0 < type < 4:
-    title = input("\n" + "▶ Escreva um título que resuma sua manifestação:  ")
+    title = input("\n" + "Escreva um título que resuma sua manifestação:  ")
     description = input("▶ Por favor, descreva sua manifestação: ")
 
     sqlInsercao = 'insert into ocorrencias (tipo, titulo , descricao , autor) values (%s,%s,%s,%s)'
