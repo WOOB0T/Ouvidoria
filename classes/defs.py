@@ -1,4 +1,4 @@
-# FUNÇÕES IMORTADAS:
+# FUNÇÕES IMPORTADAS:
 
 from def1nome import *
 from listarPorCategoria import *
