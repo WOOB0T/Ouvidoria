@@ -12,7 +12,7 @@ from classes import *
 from time import sleep
 
 # Banco de Dados:
-conexao = abrirBancoDados('localhost', 'root', '331046', 'ouvidoria1')
+conexao = abrirBancoDados('localhost', 'root', '30032004', 'ouvidoria')
 
 print("\n" + "📣 Olá, seja bem-vindo à ouvidoria Me Ouve, Unifacisa! 📣" + "\n")
 print("◆ Você faz parte de qual esfera do nosso sistema?" + "\n")
