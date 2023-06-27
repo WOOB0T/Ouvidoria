@@ -47,9 +47,9 @@ def listarResumido(conexao):
     else:
         print("\n" + "◆ Manifestações cadastradas até o momento:")
         for items in ocorrencias:
-            sleep(1.75)
+            sleep(1.0)
             print("\n" + "Protocolo:", items[0], "\n" + "➥ Título:", items[1], "\n" + "➥ Autor:", items[2])
-            sleep(1.75)
+            sleep(1.0)
 
         print("\n" + "◆ Fim da listagem.")
 
@@ -101,7 +101,7 @@ def cadastrarOcorrencias(conexao, nome):
         if userCadastro == 2:
             nome = "Anônimo"
 
-        title = input("\n" + "▶ Escreva um título que resuma sua manifestação: ")
+        title = input("\n" + "▶ EscrMeva um título que resuma sua manifestação: ")
         description = input("▶ Por favor, descreva sua manifestação: ")
 
         sqlInsercao = 'insert into ocorrencias (tipo, titulo , descricao , autor) values (%s,%s,%s,%s)'
@@ -113,26 +113,7 @@ def cadastrarOcorrencias(conexao, nome):
     else:
         print("\n" + error.center(55, " "))
 
-# 3.1 - CADASTRAR NA TABELA DA CATEGORIA
-def cadastrarOcorrenciasEmCategoria(conexao, categoria, id, title, description, name):
-
-    if categoria == 1:
-
-        tabela = "reclamacoes"
-
-    elif categoria == 2:
-
-        tabela = "sugestoes"
-
-    else:
-        tabela = "elogios"
-
-    sqlInsercao = "insert into " + tabela + " (protocolo, titulo, descricao, autor) values (%s,%s,%s,%s)"
-    valores = [id, title, description, name]
-
-    insertNoBancoDados(conexao, sqlInsercao, valores)
-
-# 3.2 - CADASTRAR NA TABELA DE USUARIOS
+# 3.1 - CADASTRAR NA TABELA DE USUARIOS
 def cadastroUsuarios(conexao, setor):
     print("\n" + loading.center(55, " ") + "\n")
     sleep(2.5)
@@ -186,14 +167,19 @@ def cadastroUsuarios(conexao, setor):
 # 4 - CONTAGEM DE OCORRENCIAS (MENU)
 def contarOcorrencias(conexao):
     quantidadeTotal = selectCount(conexao)
-    quantidadeRec = selectCountColumn(conexao, "tipo", "1")
-    quantidadeSug = selectCountColumn(conexao, "tipo", "2")
-    quantidadeElo = selectCountColumn(conexao, "tipo", "3")
 
-    print("\n" + "◆ No total, existem", quantidadeTotal, "manifestações cadastradas. Dentre essas:")
-    print("➥", quantidadeRec, "são reclamações")
-    print("➥", quantidadeSug, "são sugestões")
-    print("➥", quantidadeElo, "são elogios")
+    if quantidadeTotal == 0:
+        print("◆ Ainda não existem manifestações na ouvidoria!")
+
+    else:
+        quantidadeRec = selectCountColumn(conexao, "tipo", "1")
+        quantidadeSug = selectCountColumn(conexao, "tipo", "2")
+        quantidadeElo = selectCountColumn(conexao, "tipo", "3")
+
+        print("\n" + "◆ No total, existem", quantidadeTotal, "manifestações cadastradas. Dentre essas:")
+        print("➥", quantidadeRec, "são reclamações")
+        print("➥", quantidadeSug, "são sugestões")
+        print("➥", quantidadeElo, "são elogios")
 
 # 4.1 - CÓDIGO DA CONSULTA DE CONTAGEM
 def selectCount(conexao):
@@ -355,6 +341,5 @@ def removerPorProtocolo(conexao):
 
 # 7.4 - DELETAR SOB A CONDIÇÃO DE UMA COLUNA ESPECIFICA
 def deletFromColumn(conexao, coluna, condicao):
-    sqlDelet = "delete from ocorrencias where %s = %s"
-    dados = (coluna, condicao)
-    excluirBancoDados(conexao, sqlDelet, dados)
+    sqlDelet = "delete from ocorrencias where " + coluna + " = " + condicao
+    delAllBancoDados(conexao, sqlDelet)
