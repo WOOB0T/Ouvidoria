@@ -12,7 +12,11 @@ from classes import *
 from time import sleep
 
 # Banco de Dados:
+<<<<<<< HEAD
 conexao = abrirBancoDados('localhost', 'root', '331046', 'ouvidoria')
+=======
+conexao = abrirBancoDados('localhost', 'root', '30032004', 'ouvidoria')
+>>>>>>> ca8119e9a7cc77f2cd9a4f8646278ff572b06a30
 
 print("\n" + "📣 Olá, seja bem-vindo à ouvidoria Me Ouve, Unifacisa! 📣" + "\n")
 print("◆ Você faz parte de qual esfera do nosso sistema?" + "\n")

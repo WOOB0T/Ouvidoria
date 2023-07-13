@@ -101,7 +101,7 @@ def cadastrarOcorrencias(conexao, nome):
         if userCadastro == 2:
             nome = "Anônimo"
 
-        title = input("\n" + "▶ EscrMeva um título que resuma sua manifestação: ")
+        title = input("\n" + "▶ Escreva um título que resuma sua manifestação: ")
         description = input("▶ Por favor, descreva sua manifestação: ")
 
         sqlInsercao = 'insert into ocorrencias (tipo, titulo , descricao , autor) values (%s,%s,%s,%s)'
@@ -168,15 +168,13 @@ def cadastroUsuarios(conexao, setor):
 def contarOcorrencias(conexao):
     quantidadeTotal = selectCount(conexao)
 
-    if quantidadeTotal == 0:
-        print("◆ Ainda não existem manifestações na ouvidoria!")
+    print("\n" + "◆ No total, existem", quantidadeTotal, "manifestações cadastradas.")
 
-    else:
+    if quantidadeTotal != 0:
         quantidadeRec = selectCountColumn(conexao, "tipo", "1")
         quantidadeSug = selectCountColumn(conexao, "tipo", "2")
         quantidadeElo = selectCountColumn(conexao, "tipo", "3")
 
-        print("\n" + "◆ No total, existem", quantidadeTotal, "manifestações cadastradas. Dentre essas:")
         print("➥", quantidadeRec, "são reclamações")
         print("➥", quantidadeSug, "são sugestões")
         print("➥", quantidadeElo, "são elogios")
